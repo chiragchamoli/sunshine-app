@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- <link rel="icon" href="../../favicon.ico"> -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <title>Chrome Page - Chirag</title>
+  <link href="https://www.google.com/chrome/static/images/favicons/favicon-96x96.png" rel="icon" type="image/x-icon" />
+  <!-- Bootstrap core CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <style type="text/css">
+    body {
+      padding-top: 70px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .tiny-text {
+      font-size: 14px;
+      margin-bottom: 8px;
+      border-bottom: 1px #eee solid;
+    }
+
+    textarea {
+      overflow: hidden;
+      padding-top: 10px;
+      width: 100%;
+    }
+    .FixedHeightContainer
+    {
+    height: 100%px;
+    }
+.Content
+{
+  height: 100%;
+  height:224px;
+   overflow:auto;
+    background:#fff;
+}
+  </style>
+</head>
+
+<body ng-app="bookmarkApp" ng-controller="BookmarkListController as bookmarkList">
+
+  <!-- Fixed navbar -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+          aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://chiragchamoli.com">Chirag</a>
+      </div>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+
+          <li>
+            <a href="https://todoist.com/app?lang=en&v=719#project%2F108612705">
+              <img src="http://www.google.com/s2/favicons?domain=http://todoist.com/"> Todoist</a>
+          </li>
+          <li>
+            <a href="https://web.whatsapp.com/">
+              <img src="http://www.google.com/s2/favicons?domain=http://whatsapp.com/"> Whatsapp</a>
+          </li>
+
+
+          <li>
+            <a href="https://keep.google.com/#home">
+              <img style="width: 18px;" src="https://ssl.gstatic.com/keep/keep.ico"> Keep</a>
+          </li>
+
+          <li>
+            <a href="https://mail.google.com/mail/u/0/#inbox">
+              <img style="width: 18px;" src="https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico"> Mail
+            </a>
+          </li>
+
+          <li>
+            <a href="https://quip.com/">
+              <img src="http://www.google.com/s2/favicons?domain=http://quip.com/"> Quip
+            </a>
+          </li>
+
+          <li>
+            <a href="http://platform.sourc.in/#/home">
+              <img src="http://www.google.com/s2/favicons?domain=http://platform.sourc.in"> Staging </a>
+          </li>
+
+
+          <li>
+            <a href="https://github.com/chiragchamoli">
+              <img src="http://www.google.com/s2/favicons?domain=http://github.com"> Github Chirag </a>
+          </li>
+
+          <li>
+            <a href="https://github.com/chiragchamoli/chirax.com/edit/gh-pages/bookmark.html">
+              <img src="http://www.google.com/s2/favicons?domain=http://github.com"> [ edit ] </a>
+            <li>
+
+
+              <li>
+                <a href="https://pinboard.in/u:chirag">
+                  <img src="http://www.google.com/s2/favicons?domain=http://pinboard.in"> Pinboard
+                </a>
+                <li>
+
+
+                  <li>
+                    <a href="http://chirax.com/relax/">
+                      <img src="http://www.google.com/s2/favicons?domain=http://noisli.com"> Relax </a>
+                    <li>
+
+
+
+
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="col-md-6 tiny-text">
+      
+        <input class="form-control" ng-model="searchText" type="text" autofocus>
+        <br>
+        <ul class="list-inline" ng-repeat="bookmark in bookmarkList.bookmarks">
+          <ul class="list-inline">
+            <strong style="color:{{ bookmarkList.color }};"> → [ {{ $index }} ] {{ bookmark.label }} : </strong>
+            <li style="margin-left: 3px;" ng-repeat="item in bookmark.links | filter:searchText">
+              <a style="color:{{ bookmarkList.color }}" href="{{ item.url }}">
+                <img src="http://www.google.com/s2/favicons?domain={{ item.domain }}"> {{ item.title }}</a>
+            </li>
+          </ul>
+          <!-- <hr> -->
+
+        </ul>
+
+    </div>
+    <div class="col-md-6 tiny-text">
+      <h3>Notes</h3>
+      <div class="FixedHeightContainer">
+          <h2>Title</h2>
+          <div id="editor" style="height: 100%; padding:10px;" contenteditable="true">
+           Hello
+          </div>
+        </div>
+      
+    </div>
+  
+  
+  </div>
+  
+
+
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.0-rc.2/angular.min.js"></script>
+
+  <script type="text/javascript">
+    function checkEdits() {
+      if(localStorage.userEdits!=null)
+        document.getElementById("editor").innerHTML = localStorage.userEdits;
+    }
+    checkEdits()
+  
+
+
+    /**
+     * Returns the week number for this date.  dowOffset is the day of week the week
+     * "starts" on for your locale - it can be from 0 to 6. If dowOffset is 1 (Monday),
+     * the week returned is the ISO 8601 week number.
+     * @param int dowOffset
+     * @return int
+     */
+    Date.prototype.getWeek = function (dowOffset) {
+      /*getWeek() was developed by Nick Baicoianu at MeanFreePath: http://www.meanfreepath.com */
+
+      dowOffset = typeof (dowOffset) == 'int' ? dowOffset : 0; //default dowOffset to zero
+      var newYear = new Date(this.getFullYear(), 0, 1);
+      var day = newYear.getDay() - dowOffset; //the day of week the year begins on
+      day = (day >= 0 ? day : day + 7);
+      var daynum = Math.floor((this.getTime() - newYear.getTime() -
+        (this.getTimezoneOffset() - newYear.getTimezoneOffset()) * 60000) / 86400000) + 1;
+      var weeknum;
+      //if the year starts before the middle of a week
+      if (day < 4) {
+        weeknum = Math.floor((daynum + day - 1) / 7) + 1;
+        if (weeknum > 52) {
+          nYear = new Date(this.getFullYear() + 1, 0, 1);
+          nday = nYear.getDay() - dowOffset;
+          nday = nday >= 0 ? nday : nday + 7;
+          /*if the next year starts before the middle of
+            the week, it is week #1 of that year*/
+          weeknum = nday < 4 ? 1 : 53;
+        }
+      }
+      else {
+        weeknum = Math.floor((daynum + day - 1) / 7);
+      }
+      return weeknum;
+    };
+
+
+
+    angular.module('bookmarkApp', [])
+      .controller('BookmarkListController', function () {
+        var bookmarkList = this;
+
+
+
+
+        var offsetSFO = -8;
+        var offsetNYC = -5;
+        var offsetIn = 5.30;
+
+        var timeInSF = new Date(new Date().getTime() + offsetSFO * 3600 * 1000).toUTCString().replace(/ GMT$/, "")
+        var timeInNYC = new Date(new Date().getTime() + offsetNYC * 3600 * 1000).toUTCString().replace(/ GMT$/, "")
+        var timeInIn = new Date(new Date().getTime() + offsetIn * 3600 * 1000).toUTCString().replace(/ GMT$/, "")
+
+
+        var mydate = new Date();
+
+
+        bookmarkList.week_number = mydate.getWeek();
+        bookmarkList.color = "#2196F3";
+        bookmarkList.timeInSF = timeInSF;
+        bookmarkList.timeInNYC = timeInNYC;
+        bookmarkList.timeInIn = timeInIn;
+        bookmarkList.bookmarks = [
+          {
+            label: "New",
+            links: [
+              { title: "Sheets", url: "https://docs.google.com/spreadsheets/u/0/", domain: "document.google.com" },
+              { title: "Docs", url: "https://docs.google.com/document/u/0/", domain: "document.google.com" },
+              { title: "New Email", url: "https://mail.google.com/mail/u/0/#inbox?compose=new", domain: "mail.google.com" },
+              { title: "New Gist", url: "https://gist.github.com/", domain: "gist.github.com" },
+              { title: "New Snippets", url: "https://bitbucket.org/snippets/new", domain: "bitbucket.org" },
+              { title: "Reddit", url: "https://www.reddit.com/", domain: "reddit.com" },
+              { title: "Imgur", url: "http://imgur.com/", domain: "imgur.com" },
+              { title: "Messenger", url: "https://www.messenger.com/t/upreti.nikita", domain: "messenger.com" },
+              { title: "Get Emoji", url: "http://getemoji.com/", domain: "getemoji.com" },
+              { title: "Encrypted.google", url: "https://encrypted.google.com/", domain: "encrypted.google.com" },
+              { title: "Google Play", url: "https://play.google.com/music/listen?authuser&u=0#/now", domain: "play.google.com" },
+              { title: "Slack", url: "https://sourceeasy.slack.com/messages", domain: "slack.com" },
+              { title: "Trending Youtube", url: "https://www.youtube.com/feed/trending", domain: "youtube.com" },
+              { title: "Screenjunkies", url: "http://www.screenjunkies.com/", domain: "screenjunkies.com" },
+
+            ]
+          },
+          {
+            label: "Reading",
+            links: [
+              { title: "Skim", url: "http://skimfeed.com/custom.php?f=l%2Cp%2C23%2C22%2C14%2C12%2C2%2C1%2C203%2C42%2C172%2C170%2C290%2C71%2C59%2C60%2C62%2C75%2C77%2C78%2C81%2C270", domain: "skimfeed.com" },
+              { title: "Hacker News", url: "https://news.ycombinator.com/", domain: "ycombinator.com" },
+              { title: "4chan Tech", url: "http://boards.4chan.org/g/", domain: "4chan.org" },
+              { title: "Feedly", url: "https://feedly.com/i/my", domain: "feedly.com" },
+              { title: "Pocket", url: "https://getpocket.com/a/queue/list/", domain: "getpocket.com" },
+              { title: "Techmeme", url: "https://www.techmeme.com/", domain: "techmeme.com" },
+              { title: "Medium", url: "https://medium.com/", domain: "medium.com" },
+
+            ]
+          },
+          {
+            label: "Developers",
+            links: [
+              { title: "Sentry", url: "https://sentry.io/", domain: "sentry.io" },
+              { title: "Pagespeed Insight", url: "https://developers.google.com/speed/pagespeed/insights/", domain: "developers.google.com" },
+              { title: "Digitalocean", url: "https://www.digitalocean.com/", domain: "digitalocean.com" },
+              { title: "Twitter Analytics", url: "https://analytics.twitter.com/user/chiragchamoli/tweets?filter=top&origin=im&ref=gl-an-tw-im-desktop", domain: "twitter.com" },
+              { title: "Jira", url: "https://sourceasy.atlassian.net/secure/Dashboard.jspa", domain: "atlassian.net" },
+              { title: "AWS", url: "http://aws.amazon.com/", domain: "amazon.com" },
+              { title: "Bitbucket", url: "https://bitbucket.org/sourceasy/", domain: "bitbucket.org" },
+              { title: "JSON Editor", url: "http://jsoneditoronline.org/", domain: "jsoneditoronline.org" },
+
+            ]
+          },
+          {
+            label: "BJ",
+            links: [
+              { title: "Chirag", url: "https://bluejeans.com/9986642009/", domain: "bluejeans.com" },
+              { title: "Pranay", url: "https://bluejeans.com/6789826599/", domain: "bluejeans.com" },
+              { title: "Jagan", url: "https://bluejeans.com/9177527319/", domain: "bluejeans.com" },
+              { title: "Tricia", url: "https://bluejeans.com/7297762629/", domain: "bluejeans.com" },
+
+
+            ]
+          },
+          {
+            label: "PHP/JS",
+            links: [
+              { title: "Php - Right Way", url: "http://www.phptherightway.com/", domain: "phptherightway.com" },
+              { title: "Learning JavaScript Design Patterns", url: "http://addyosmani.com/resources/essentialjsdesignpatterns/book/", domain: "addyosmani.com" },
+              { title: "Eloquent JavaScript", url: "http://eloquentjavascript.net/", domain: "eloquentjavascript.net" },
+              { title: "Awesome-php", url: "https://github.com/ziadoz/awesome-php#notifications", domain: "github.com" },
+            ]
+          },
+          {
+            label: "Python/Django/Flask",
+            links: [
+              { title: "Flask", url: "http://flask.pocoo.org/", domain: "pocoo.org" },
+              { title: "LPTHW", url: "https://learnpythonthehardway.org/book/ex3.html", domain: "learnpythonthehardway.org" },
+              { title: "Django project", url: "https://www.djangoproject.com/", domain: "djangoproject.com" },
+              { title: "Google App Engine", url: "https://cloud.google.com/appengine/docs?csw=1", domain: "cloud.google.com" },
+              { title: "Django Packages", url: "https://djangopackages.org/", domain: "djangopackages.org" },
+              { title: "Planet Python", url: "http://planetpython.org/", domain: "planetpython.org" },
+              { title: "Mezzanine CMS", url: "http://mezzanine.jupo.org/", domain: "jupo.org" },
+              { title: "The Hitchhiker’s Guide to Python!", url: "http://docs.python-guide.org/en/latest/", domain: "python-guide.org" },
+              { title: "Reddit [PY/DJ/FL]", url: "https://www.reddit.com/r/Python+django+flask/", domain: "reddit.com" },
+
+            ]
+          },
+          {
+            label: "Security",
+            links: [
+              { title: "Security Tools", url: "https://www.hkcert.org/security-tools", domain: "hkcert.org" },
+              { title: "Penetration Testing", url: "https://highon.coffee/blog/penetration-testing-tools-cheat-sheet", domain: "highon.coffee" },
+              { title: "Transparency toolkit ", url: "https://transparencytoolkit.org/", domain: "transparencytoolkit.org" },
+              { title: "Owasp ", url: "https://www.owasp.org/index.php/Main_Page", domain: "owasp.org" },
+              { title: "Google Application Security ", url: "https://static.googleusercontent.com/intl/hu/about/appsecurity/learning/xss/", domain: "googleusercontent.com" },
+
+
+
+            ]
+          },
+          {
+            label: "Domains",
+            links: [
+              { title: "Znetlive", url: "https://manage.znetlive.com/memberp/dashboard", domain: "znetlive.com" },
+              { title: "Hover", url: "https://www.hover.com/", domain: "hover.com" },
+              { title: "Instant Domain Search", url: "https://instantdomainsearch.com/", domain: "instantdomainsearch.com" },
+            ]
+          },
+
+          {
+            label: "Others",
+            links: [
+              { title: "Citibank", url: "https://www.citibank.co.in/", domain: "citibank.com" },
+              { title: "Lessons from Failed Startups", url: "http://autopsy.io/", domain: "autopsy.io" },
+              { title: "BSNL Portal", url: "https://portal2.bsnl.in/myportal/workspace.do", domain: "bsnl.in" },
+            ]
+          },
+          {
+            label: "Devops",
+            links: [
+              { title: "Puphpet", url: "https://puphpet.com/#vagrantfile-digitalocean", domain: "puphpet.com" },
+              { title: "Papertrail", url: "https://papertrailapp.com/?thank=6f3b0e", domain: "papertrailapp.com" },
+
+              { title: "Rove.io", url: "http://rove.io/", domain: "rove.io" },
+              { title: "git inside-out", url: "https://codewords.recurse.com/issues/two/git-from-the-inside-out", domain: "recurse.com" },
+              { title: "Shipping Docker", url: "https://shippingdocker.com/docker-in-development/", domain: "shippingdocker.com" },
+            ]
+          },
+          {
+            label: "Checklists/Lists",
+            links: [
+              { title: "Uxchecklist", url: "http://uxchecklist.github.io/", domain: "0to255.com" },
+              { title: "Startup Incorporation Checklist", url: "https://github.com/leonar15/startup-checklist", domain: "coolors.co" },
+              { title: "The SaaS CTO Security Checklist", url: "http://cto-security-checklist.sqreen.io/", domain: "goodemailcopy.com" },
+              { title: "Darkpatterns", url: "http://darkpatterns.org/", domain: "darkpatterns.org" },
+              { title: "Botlist", url: "https://botlist.co/", domain: "botlist.co" },
+              { title: "Brutalist", url: "http://brutalistwebsites.com/", domain: "brutalistwebsites.com" },
+              { title: "Requests for startups", url: "http://startupdb.requestsforstartups.com/_site/index.html", domain: "requestsforstartups.com" },
+
+
+
+
+
+            ]
+          },
+          {
+            label: "CSS",
+            links: [
+              { title: "0to255", url: "http://www.0to255.com/EEE", domain: "0to255.com" },
+              { title: "Generate Color Schemes", url: "http://coolors.co/d8e0bb-b6cec7-86a3c3-7268a6-6b3074", domain: "coolors.co" },
+              { title: "Email copy", url: "http://www.goodemailcopy.com/", domain: "goodemailcopy.com" }
+            ]
+          },
+          {
+            label: "App",
+            links: [
+              { title: "Audiko", url: "http://audiko.net/", domain: "audiko.net" },
+              { title: "Shellcheck", url: "http://www.shellcheck.net/", domain: "shellcheck.net" },
+              { title: "Malware Checker", url: "https://sitecheck.sucuri.net/results/blog.sourceeasy.com/", domain: "sitecheck.sucuri.net" },
+              { title: "BadRobot", url: "https://www.nw3c.org/", domain: "nw3c.org" },
+              { title: "Worldtimebuddy", url: "http://www.worldtimebuddy.com/", domain: "worldtimebuddy.com" },
+              { title: "SQL - Editor", url: "http://ondras.zarovi.cz/sql/demo/", domain: "zarovi.cz" },
+              { title: "Have I Been Pwned", url: "https://haveibeenpwned.com/", domain: "haveibeenpwned.com" },
+              { title: "Justdeleteme", url: "http://backgroundchecks.org/justdeleteme/", domain: "backgroundchecks.org" },
+              { title: "Tunefind", url: "http://www.tunefind.com/", domain: "tunefind.com" },
+              { title: "Speedtest", url: "https://sourceforge.net/speedtest/", domain: "sourceforge.net" },
+            ]
+          },
+        ];
+
+
+
+
+        // bookmarkList.addTodo = function() {
+        //   bookmarkList.todos.push({text:bookmarkList.todoText, done:false});
+        //   bookmarkList.todoText = '';
+        // };
+
+        // bookmarkList.remaining = function() {
+        //   var count = 0;
+        //   angular.forEach(bookmarkList.todos, function(todo) {
+        //     count += todo.done ? 0 : 1;
+        //   });
+        //   return count;
+        // };
+
+      });
+
+
+
+  </script>
+  <script type="text/javascript">
+
+    function password_generator(len) {
+      var length = (len) ? (len) : (10);
+      var string = "abcdefghijklmnopqrstuvwxyz"; //to upper 
+      var numeric = '0123456789';
+      var punctuation = '!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+      var password = "";
+      var character = "";
+      var crunch = true;
+      while (password.length < length) {
+        entity1 = Math.ceil(string.length * Math.random() * Math.random());
+        entity2 = Math.ceil(numeric.length * Math.random() * Math.random());
+        entity3 = Math.ceil(punctuation.length * Math.random() * Math.random());
+        hold = string.charAt(entity1);
+        hold = (entity1 % 2 == 0) ? (hold.toUpperCase()) : (hold);
+        character += hold;
+        character += numeric.charAt(entity2);
+        character += punctuation.charAt(entity3);
+        password = character;
+      }
+      return password;
+    }
+
+    $('a').each(function () { $(this).attr("target", "_blank"); });
+
+    var newPass = password_generator(16);
+    console.log("Password: " + newPass)
+    $("#password").html(newPass);
+
+
+    $("#newPassAsk").click(function () {
+      var newPass = password_generator(16);
+      $("#password").html(newPass);
+    });
+    $("#newPassAsk32").click(function () {
+      var newPass = password_generator(32);
+      $("#password").html(newPass);
+    });
+  </script>
+
+  <!-- 
+<script type="text/javascript">
+  document.getElementById("time").innerHTML = formatAMPM();
+
+function formatAMPM() {
+var d = new Date(),
+    minutes = d.getMinutes().toString().length == 1 ? '0'+d.getMinutes() : d.getMinutes(),
+    hours = d.getHours().toString().length == 1 ? '0'+d.getHours() : d.getHours(),
+    ampm = d.getHours() >= 12 ? 'pm' : 'am',
+    months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+return days[d.getDay()]+' '+months[d.getMonth()]+' '+d.getDate()+' '+d.getFullYear()+' | '+hours+':'+minutes+ampm;
+}
+</script> -->
+
+  <script type="text/javascript">
+
+
+  </script>
+</body>
+
+</html>
